@@ -46,6 +46,9 @@ declare global {
                 local: ChatSettings;
             };
             templates: HTMLTemplateManager;
+            log: (...args: any[]) => void;
+            debug: (...args: any[]) => void;
+            error: (...args: any[]) => void;
         };
 
         type GlobalInterface = {

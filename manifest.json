@@ -3,7 +3,7 @@
     "loading_order": 0,
     "js": "index.js",
     "author": "Leandro Jofre",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "minimum_client_version": "1.17.0",
     "homePage": "https://github.com/leandrojofre/SillyTavern-Tomato-Lib.git",
     "auto_update": true

@@ -35,6 +35,33 @@ const extensionName = "Tomato-Lib";
 const extensionFullName = 'SillyTavern-Tomato-Lib';
 const extensionFolderPath = `scripts/extensions/third-party/${extensionFullName}`;
 
+function log(...mess) {
+    const settings = this.extensionSettings || {};
+    const name = this.extensionName || extensionName;
+
+    if (!settings.enabled || !settings.debug) return;
+
+    console.log(`[${name}]`, ...mess);
+};
+
+function debug(...mess) {
+    const settings = this.extensionSettings || {};
+    const name = this.extensionName || extensionName;
+
+    if (!settings.enabled || !settings.debug) return;
+
+    console.debug(`[${name}]`, ...mess);
+};
+
+function error(...mess) {
+    const settings = this.extensionSettings || {};
+    const name = this.extensionName || extensionName;
+
+    if (!settings.enabled || !settings.debug) return;
+
+    console.error(`[${name}]`, ...mess);
+};
+
 // * MARK:Extension Interface
 
 /**
@@ -71,6 +98,9 @@ globalThis.TomatoLib = {
                 templates: new HTMLTemplateManager({
                     folderPath: extensionFolderPath,
                 }),
+                log: log.bind({extensionSettings, extensionName}),
+                debug: debug.bind({extensionSettings, extensionName}),
+                error: error.bind({extensionSettings, extensionName}),
             };
 
             TomatoLib.API.instances.set(extensionName, instance);
