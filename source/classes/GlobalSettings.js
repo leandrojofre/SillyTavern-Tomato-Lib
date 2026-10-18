@@ -9,7 +9,7 @@ import {
 
 const {
     saveSettingsDebounced,
-} = context();
+} = SillyTavern.getContext();
 
 export class GlobalSettings {
 
@@ -27,6 +27,11 @@ export class GlobalSettings {
         this.defaults = defaults;
         this.settings = settingsSource;
         this.callbacks = callbacks;
+
+        this.onBoolean = this.onBoolean.bind(this);
+        this.onText = this.onText.bind(this);
+        this.onNumber = this.onNumber.bind(this);
+        this.printSettings = this.printSettings.bind(this);
     }
 
     /**
@@ -42,7 +47,7 @@ export class GlobalSettings {
     }
 
     /**
-     * @param {EventData<HTMLInputElement>} event
+     * @param {JQuery.TriggeredEvent} event
      */
     onBoolean(event) {
         const $target = $(event.target);
@@ -57,7 +62,7 @@ export class GlobalSettings {
     }
 
     /**
-     * @param {EventData<HTMLInputElement|HTMLSelectElement>} event
+     * @param {JQuery.TriggeredEvent} event
      */
     onText(event) {
         const $target = $(event.target);
@@ -80,7 +85,7 @@ export class GlobalSettings {
     }
 
     /**
-     * @param {EventData<HTMLInputElement>} event
+     * @param {JQuery.TriggeredEvent} event
      */
     onNumber(event) {
         const target = event.target;
