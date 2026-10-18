@@ -35,11 +35,15 @@ const extensionName = "Tomato-Lib";
 const extensionFullName = 'SillyTavern-Tomato-Lib';
 const extensionFolderPath = `scripts/extensions/third-party/${extensionFullName}`;
 
+function isSettingDisabled(settingsSource, key) {
+    return key in settingsSource && !settingsSource[key];
+}
+
 function log(...mess) {
     const settings = this.extensionSettings || {};
     const name = this.extensionName || extensionName;
 
-    if (!settings.enabled || !settings.debug) return;
+    if (isSettingDisabled(settings, 'enabled') || isSettingDisabled(settings, 'debug')) return;
 
     console.log(`[${name}]`, ...mess);
 };
@@ -48,7 +52,7 @@ function debug(...mess) {
     const settings = this.extensionSettings || {};
     const name = this.extensionName || extensionName;
 
-    if (!settings.enabled || !settings.debug) return;
+    if (isSettingDisabled(settings, 'enabled') || isSettingDisabled(settings, 'debug')) return;
 
     console.debug(`[${name}]`, ...mess);
 };
@@ -57,7 +61,7 @@ function error(...mess) {
     const settings = this.extensionSettings || {};
     const name = this.extensionName || extensionName;
 
-    if (!settings.enabled || !settings.debug) return;
+    if (isSettingDisabled(settings, 'enabled') || isSettingDisabled(settings, 'debug')) return;
 
     console.error(`[${name}]`, ...mess);
 };
