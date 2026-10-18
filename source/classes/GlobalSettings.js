@@ -1,7 +1,3 @@
-import {
-    context,
-} from '../../index.js';
-
 /**
  * @template T
  * @typedef {TomatoLib.EventData<T>} EventData
