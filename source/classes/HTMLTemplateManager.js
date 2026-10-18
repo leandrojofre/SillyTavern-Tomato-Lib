@@ -24,12 +24,14 @@ export class HTMLTemplateManager {
      * @returns {Promise<JQuery<HTMLElement>>}
      */
     async get(fileName = 'settings', {clone = false} = {}) {
+        const manager = this;
+
 		if (!this.cache.has(fileName)) {
             try {
                 await $
                     .get(`${this.folderPath}/source/templates/${fileName}.html`)
                     .done(function(response) {
-                        this.cache.set($(response));
+                        manager.cache.set(fileName, $(response));
                     });
             } catch (error) {
 				const tryFallbackPath = error?.status === 404 && !this.didFetchFallback;
