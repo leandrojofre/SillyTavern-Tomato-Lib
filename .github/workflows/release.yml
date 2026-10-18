@@ -72,9 +72,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.determine_version.outputs.new_version }}
-          release_name: Extension Name v${{ steps.determine_version.outputs.new_version }}
+          release_name: Tomato-Lib v${{ steps.determine_version.outputs.new_version }}
           body: |
            - **PR Title**: [#${{ steps.pr_details.outputs.number }}] ${{ steps.pr_details.outputs.title }}
-           - **Merged by**: @${{ steps.pr_details.outputs.user }}
+           - **Created by**: @${{ steps.pr_details.outputs.user }}
           draft: false
           prerelease: false
