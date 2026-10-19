@@ -124,7 +124,7 @@ globalThis.TomatoLib = {
         MED: 500,
         LONG: 700
     }),
-    utils,
+    ...utils,
 };
 
 // * MARK:Initialize Extension

@@ -37,7 +37,7 @@ declare global {
             extensionSettings?: Object;
             extensionSettingsDefaults?: Object;
             extensionChatSettingsDefaults?: Object;
-            extensionCallbacks?: Record<string, Function>;
+            extensionCallbacks?: Record<string, Function> | {};
         };
 
         type APIInstance = {
@@ -51,7 +51,7 @@ declare global {
             error: (...args: any[]) => void;
         };
 
-        type GlobalInterface = {
+        type GlobalInterface = Utils & {
             API: {
                 create: (args: APIInstanceArgs) => APIInstance;
                 instances: Map<string, APIInstance>;
@@ -62,7 +62,6 @@ declare global {
                 HTMLTemplateManager: HTMLTemplateManagerClass,
                 ExternalExtension: ExternalExtensionClass,
             };
-            utils: Utils;
             /** @readonly @enum */
             debounceTimeout: {
                 MICRO: 50;
