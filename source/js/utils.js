@@ -12,7 +12,7 @@ export {
     getChatMembers,
     findCharacter,
     findUser,
-    characterFromMessage,
+    findCharacterFromMessage,
     getDefaultIDRange,
     getFreeDataUid,
     delay,
@@ -170,7 +170,7 @@ function findCharacter(search, {allowAvatar = true, members = [], is_user = fals
  * @param {string|number} mess_id
  * @returns {Character|UserCharacter}
  */
-function characterFromMessage(mess_id) {
+function findCharacterFromMessage(mess_id) {
     const { chat } = context();
     const mes = chat[mess_id] ?? null;
 
