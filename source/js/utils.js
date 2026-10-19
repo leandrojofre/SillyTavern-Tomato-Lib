@@ -15,6 +15,7 @@ export {
     characterFromMessage,
     getDefaultIDRange,
     getFreeDataUid,
+    delay,
 };
 
 /** @typedef {TomatoLib.UserCharacter} UserCharacter */
@@ -249,4 +250,13 @@ function getFreeDataUid(data = {}) {
 
     for (let uid = 0; uid < LIMIT; uid++)
         if (!used.has(String(uid))) return uid;
+}
+
+/**
+ * Creates a timeout to delay code execution.
+ * @param {number} time Amount of milliseconds to wait.
+ * @returns {Promise<void>}
+ */
+async function delay(time) {
+    return await new Promise((resolve) => setTimeout(resolve, time));
 }
