@@ -258,5 +258,5 @@ function getFreeDataUid(data = {}) {
  * @returns {Promise<void>}
  */
 async function delay(time) {
-    return await new Promise((resolve) => setTimeout(resolve, time));
+    return await new Promise((resolve) => setTimeout(resolve, Math.max(time, 0)));
 }
